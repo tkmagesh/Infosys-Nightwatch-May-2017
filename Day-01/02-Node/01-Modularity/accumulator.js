@@ -1,19 +1,21 @@
-var result = 0;
+function accumulatorFactory(){
+	
+	var result = 0;
+	function add(n){
+		result += n;
+	}
 
-function add(n){
-	result += n;
+	function subtract(n){
+		result -= n;
+	}
+	function getResult(){
+		return result;
+	}
+
+	return {
+		add : add,
+		subtract : subtract,
+		getResult : getResult
+	};
 }
-
-function subtract(n){
-	result -= n;
-}
-function getResult(){
-	return result;
-}
-
-module.exports = {
-	add : add,
-	subtract : subtract,
-	getResult : getResult
-};
-
+module.exports = accumulatorFactory;

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Products</title>
+	<script>
+		(function(){
+			function init(){
+				var btnAdd = document.getElementById('btnAdd');
+				btnAdd.addEventListener('click', onBtnAddClick);
+			}
+			function onBtnAddClick(){
+				var productName = document.getElementById('txtName').value;
+				var newProductItem = document.createElement('li');
+				newProductItem.innerHTML = productName;
+
+				var productList = document.getElementById('productList');
+				productList.appendChild(newProductItem);
+			}
+			window.addEventListener('DOMContentLoaded', init);
+		})();
+		function productAddTest(productName){
+			//Arrange
+				var txtName = document.getElementById('txtName'),
+					btnAdd = document.getElementById('btnAdd'),
+					productList = document.getElementById('productList');
+
+			//Act
+				txtName.value = productName;
+				btnAdd.click();
+
+			//Assert
+			var newProductItem = productList.lastElementChild;
+			if (newProductItem.innerHTML === productName){
+				console.log('Test pass!!');
+			} else {
+				console.warn('Test fail!!');
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="context">
+		<label for="">Product Name :</label>
+		<input type="text" id="txtName">
+		<input type="button" value="Add New" id="btnAdd">
+		
+		<ol id="productList">
+			<li>Pen</li>
+		</ol>
+	</div>
+</body>
+</html>
