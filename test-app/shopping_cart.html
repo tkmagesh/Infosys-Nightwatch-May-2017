@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Shopping Cart</title>
+	<script>
+		(function(){
+			window.addEventListener('DOMContentLoaded', init);
+			var txtProductName,
+				numCost,
+				numUnits,
+				numDiscount,
+				divResult;
+			function init(){
+				txtProductName = document.getElementById('txtProductName');
+				numCost= document.getElementById('numCost');
+				numUnits = document.getElementById('numUnits');
+				numDiscount = document.getElementById('numDiscount');
+				divResult = document.getElementById('divResult');
+
+				var btnCalculate = document.getElementById('btnCalculate');
+				btnCalculate.addEventListener('click', onBtnCalculateClick);
+			}
+			function onBtnCalculateClick(){
+				var cost = parseInt(numCost.value),
+					units = parseInt(numUnits.value),
+					discount = parseInt(numDiscount.value);
+				var value = (cost * units) * ((100-discount)/100);
+				divResult.innerHTML = value;
+			}
+		})()
+	</script>
+</head>
+<body>
+	<input type="text" id="txtProductName">
+	<input type="number" id="numCost">
+	<input type="number" id="numUnits">
+	<input type="number" id="numDiscount">
+	<input type="button" value="Calculate" id="btnCalculate">
+	<div id="divResult"></div>
+</body>
+</html>
